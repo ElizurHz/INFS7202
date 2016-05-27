@@ -1,0 +1,72 @@
+#upload_logo {
+  text-align: center;
+  padding-top: 250px;
+  padding-bottom: 65px;
+  margin-left: 37%;
+}
+
+#upload_logo a {  text-decoration: none;}
+
+#upload_logo ul {  width: 300px;}
+
+#upload_logo li {  list-style-type: none;}
+
+#upload_icon {   padding-bottom: 10px; }
+
+#upload_logo h3 {
+  font-family: HelveticaNeue;
+  color: #c22eca;
+}
+
+#pic_stream {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.uploaded_pics {  
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+
+.wrapper {
+  display:inline-block;
+  background-image:url(../images/add_new.png);
+  height:101px;
+  width:101px;
+  overflow:hidden;
+  cursor:pointer;
+}
+.wrapper input{
+  opacity:0;
+  height:101px;
+  width:101px;
+}
+
+.form-group {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 65px;
+}
+
+.form-group label {
+  font-family: HelveticaNeue;
+  font-size: 9.6px;
+  color: #999999;
+}
+
+#title_input {  margin-bottom: 8px;}
+
+#comment_input { height: 200px;}
+
+#button_group {
+  margin-top: 15px;
+  padding-right: 5px;
+  margin-bottom: 50px; 
+}
+
+#button_group button {
+  margin-right: 5px;
+}

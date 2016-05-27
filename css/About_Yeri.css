@@ -1,0 +1,64 @@
+.about_Yeri {  
+  height: auto;
+  margin-top: 50px; 
+  padding-top: 10px;
+  position: relative;
+}
+
+.about {  
+  height: auto;
+  position: relative;
+}
+
+.about h2 {
+  font-family: Avenir-Book;
+  font-size: 28px;
+  color: #9613EA;
+  padding-left: 1%;
+  margin-bottom: -20px;
+}
+
+.about p {
+  padding-left: 1%;
+  margin-top: -5px;
+  font-family: Helvetica;
+  font-size: 18px;
+  color: #ed6ea8;
+}
+
+.about ul li {
+  padding-left: 1%;
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #ed6ea8;
+}
+
+.content {  
+  margin-bottom: -50px;
+  margin-top: 200px;
+}
+
+.content ul li {
+  padding-left: 1%;
+  font-family: Helvetica;
+  font-size: 14px;
+  color: #ed6ea8;
+}
+
+.content h2 {  text-align: center; }
+
+#album_stream {  text-align: center;}
+
+.albums {  
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.albums ul {  list-style-type: none; }
+
+.albums ul li {
+  font-family: Avenir-Book;
+  color: #ed6ea8;
+}
