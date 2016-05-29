@@ -64,7 +64,18 @@
               <?php
                  if($_SESSION['auth']){
               ?> 
-                <li><a class="dropdown_item" id="currentUser">Current User: <?php echo $_SESSION['username'] ?></a></li>
+                <li>
+                  <a class="dropdown_item" id="currentUser">
+                    <?php
+                      if ($_SESSION['admin']) {
+                        echo "Administrator: ";
+                      } else {
+                        echo "Current User:  ";
+                      } 
+                      echo $_SESSION['username'] 
+                    ?>
+                  </a>
+                </li>
                 <li id="logout"><a class="dropdown_item" data-toggle="modal" data-target="#LogoutModal">Log Out</a></li>
                 <li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal" onclick="changePasswordClear();">Change Password</a></li>
                 <?php 

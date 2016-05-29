@@ -48,9 +48,13 @@ function submitLoginForm() {
         // close the modal and change the DOM of "Account"
         setTimeout(function(){
           $('#LoginModal').modal('hide');
-        },1000);      
+        },1000);
+        if (data.admin) {
+          $('#account').append('<li><a class="dropdown_item" id="currentUser">Administrator: ' + data.username + '</a></li>');
+        } else {
+          $('#account').append('<li><a class="dropdown_item" id="currentUser">Current User: ' + data.username + '</a></li>');
+        }     
         $('#signup, #login').hide();
-        $('#account').append('<li><a class="dropdown_item" id="currentUser">Current User: ' + data.username + '</a></li>');
         $('#account').append('<li id="logout"><a class="dropdown_item" data-toggle="modal" data-target="#LogoutModal">Log Out</a></li>');
         $('#account').append('<li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal" onclick="changePasswordClear();">Change Password</a></li>');
         if (data.admin) {
