@@ -4,6 +4,7 @@ Inplement a function with PHP and MySQL that you propose in assignment 1.
 ## Overview
 This is the code of the whole site. The details in Login.php is compatible with Amazon EC2. You may adjust it to make sure it works on your environment.
 For any detail, visit [this site](http://ec2-52-40-16-205.us-west-2.compute.amazonaws.com/).
+For the assignment specification, click [here](https://github.com/ElizurHz/INFS7202/blob/master/Assignment%20Two%20Spec.pdf).
 ## Login System
 I only implement the login system. 
 
