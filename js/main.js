@@ -128,7 +128,7 @@ function changePassword() {
   var currUser = $('#currentUser').html().substring(14);
 
   // Input the same password
-  if (currPassword == newPassword) {
+  if (currPassword.value == newPassword.value) {
     $('#changePassword_info').html('Your new password cannot be the same as your current password!');
     return;
   }
