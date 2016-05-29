@@ -201,7 +201,7 @@
            <form class="form-signin">
              <div id="info_span"><span id="changePassword_info"></span></div>             
              <label for="inputPassword" class="sr-only">Your Current Password</label>
-             <input type="passowrd" id="currentPassword" class="form-control" placeholder="Your Current Password" required="" autofocus="">
+             <input type="password" id="currentPassword" class="form-control" placeholder="Your Current Password" required="" autofocus="">
              <label for="inputPassword" class="sr-only">New Password</label>
              <input type="password" id="newPassword" class="form-control" placeholder="New Password" required="">
              <label for="inputPassword" class="sr-only">Confirm Your New Password</label>

@@ -73,18 +73,15 @@
 
   <div class="container main_content">
     <div id="feedback_title">
-      <div class="comment_handling" id="new_feedback">
-        <a class="uk-button uk-button-large" href="#"><i class="uk-icon-plus"></i>   New Feedback</a>
-      </div>
       <h2>Feedback</h2>
+      <div class="comment_handling" id="new_feedback">
+        <a class="uk-button uk-button-large" href="#"><i class="uk-icon-plus"></i>   New</a>
+      </div>
     </div>
     <ul class="uk-comment-list">
       <li>
         <article class="uk-comment comment">
           <hr>
-          <div class="comment_handling">
-            <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-          </div>
           <header class="uk-comment-header">
               <img class="uk-comment-avatar" src="images/avatar4.jpg" alt="avatar4">
               <h4 class="uk-comment-title">Feedback 1</h4>
@@ -92,21 +89,24 @@
                 <a target="_blank" href="#">Wendy</a>
                 Created at 1/4/2016 13:07, Last updated at 1/4/2016 13:07
               </div>
+              <div class="comment_handling">
+                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
+              </div>
           </header>
           <div class="uk-comment-body"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p></div>
           <ul>
             <li>
               <article class="uk-comment reply">
                 <hr>
-                <div class="comment_handling">
-                  <a target="_blank" class="uk-button" href="#"><i class="uk-icon-edit"></i>   Edit</a>
-                  <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-                </div>
                 <header class="uk-comment-header">
                   <img class="uk-comment-avatar" src="images/avatar1.jpg" alt="avatar1">
                   <h4 class="uk-comment-title"><a target="_blank" href="#">Yerim Kim</a></h4>
                   <div class="uk-comment-meta">
                     Created at 1/4/2016 13:12, Last updated at 1/4/2016 13:12
+                  </div>
+                  <div class="comment_handling">
+                    <a target="_blank" class="uk-button" href="#"><i class="uk-icon-edit"></i>   Edit</a>
+                    <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
                   </div>
                 </header>
                 <div class="uk-comment-body"><p>Thank you for your advice. We think it is resonable and we will consider it.</p></div>
@@ -118,15 +118,15 @@
       <li>
         <article class="uk-comment comment">
           <hr>
-          <div class="comment_handling">
-            <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-          </div>
           <header class="uk-comment-header">
               <img class="uk-comment-avatar" src="images/avatar5.jpg" alt="avatar5">
               <h4 class="uk-comment-title">Feedback 2</h4>
               <div class="uk-comment-meta">
                 <a target="_blank" href="#">Irene</a>
                 Created at 1/4/2016 13:09, Last updated at 1/4/2016 13:10
+              </div>
+              <div class="comment_handling">
+                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
               </div>
           </header>
           <div class="uk-comment-body"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p></div>

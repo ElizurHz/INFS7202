@@ -108,11 +108,6 @@
             <h3>Comment</h3>
           </div>
           <hr>
-          <div class="comment_handling">
-            <a target="_blank" class="uk-button" href="#"><i class="uk-icon-edit"></i>   Edit</a>
-            <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
-            <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-          </div>
           <header class="uk-comment-header">
               <img class="uk-comment-avatar" src="images/avatar1.jpg" alt="avatar1">
               <h4 class="uk-comment-title">Love this</h4>
@@ -120,21 +115,26 @@
                 <a target="_blank" href="#">Yerim Kim</a>
                 Created at 1/4/2016 13:06, Last updated at 1/4/2016 13:06
               </div>
+              <div class="comment_handling">
+                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-edit"></i>   Edit</a>
+                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
+                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
+              </div>
           </header>
           <div class="uk-comment-body"><p>So beautiful!</p></div>
           <ul>
             <li>
               <article class="uk-comment reply">
                 <hr>
-                <div class="comment_handling">
-                    <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
-                    <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-                </div>
                 <header class="uk-comment-header">
                   <img class="uk-comment-avatar" src="images/avatar2.jpg" alt="avatar2">
                   <h4 class="uk-comment-title"><a target="_blank" href="#">Seulgi Kang</a></h4>
                   <div class="uk-comment-meta">
                     Created at 1/4/2016 13:15, Last updated at 1/4/2016 13:15
+                  </div>
+                  <div class="comment_handling">
+                      <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
+                      <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
                   </div>
                 </header>
                 <div class="uk-comment-body"><p>Totally agree!</p></div>
@@ -143,15 +143,15 @@
                 <li>
                   <article class="uk-comment reply">
                     <hr>
-                    <div class="comment_handling">
-                      <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
-                      <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-                    </div>
                     <header class="uk-comment-header">
                       <img class="uk-comment-avatar" src="images/avatar3.jpg" alt="avatar3">
-                      <h4 class="uk-comment-title"><a target="_blank" href="#">SeulgiBear</a></h4>
+                      <h4 class="uk-comment-title"><a target="_blank" href="#">SeulgiBear</a></h4>\
                       <div class="uk-comment-meta">
                         Created at 1/4/2016 13:18, Last updated at 1/4/2016 13:18
+                      </div>
+                      <div class="comment_handling">
+                        <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
+                        <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
                       </div>
                     </header>
                     <div class="uk-comment-body"><p>Yep</p></div>
@@ -162,15 +162,15 @@
             <li>
               <article class="uk-comment reply">
                 <hr>
-                <div class="comment_handling">
-                  <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
-                  <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-                </div>
                 <header class="uk-comment-header">
                   <img class="uk-comment-avatar" src="images/avatar6.png" alt="avatar6">
                   <h4 class="uk-comment-title"><a target="_blank" href="#">SeulRene</a></h4>
                   <div class="uk-comment-meta">
                     Created at 1/4/2016 13:18, Last updated at 1/4/2016 13:18
+                  </div>
+                  <div class="comment_handling">
+                    <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
+                    <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
                   </div>
                 </header>
                 <div class="uk-comment-body"><p>lmao</p></div>
@@ -187,16 +187,16 @@
     <li>
       <article class="uk-comment comment">
         <hr>
-        <div class="comment_handling">
-          <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
-          <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-        </div>
         <header class="uk-comment-header">
             <img class="uk-comment-avatar" src="images/avatar4.jpg" alt="avatar4">
             <h4 class="uk-comment-title">The Hello Kitty~</h4>
             <div class="uk-comment-meta">
               <a target="_blank" href="#">Wendy</a>
               Created at 1/4/2016 13:07, Last updated at 1/4/2016 13:07
+            </div>
+            <div class="comment_handling">
+              <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
+              <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
             </div>
         </header>
         <div class="uk-comment-body"><p>lol</p></div>
@@ -205,10 +205,6 @@
     <li>
       <article class="uk-comment comment">
         <hr>
-        <div class="comment_handling">
-          <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
-          <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-        </div>
         <header class="uk-comment-header">
             <img class="uk-comment-avatar" src="images/avatar5.jpg" alt="avatar5">
             <h4 class="uk-comment-title">I like the smile face</h4>
@@ -216,22 +212,26 @@
               <a target="_blank" href="#">Irene</a>
               Created at 1/4/2016 13:09, Last updated at 1/4/2016 13:10
             </div>
+            <div class="comment_handling">
+              <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
+              <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
+            </div>
         </header>
         <div class="uk-comment-body"><p>That smile's just like my daughter...</p></div>
         <ul>
           <li>
             <article class="uk-comment reply">
               <hr>
-              <div class="comment_handling">
-                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-edit"></i>   Edit</a>
-                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
-                <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
-              </div>
               <header class="uk-comment-header">
                 <img class="uk-comment-avatar" src="images/avatar1.jpg" alt="avatar1">
                 <h4 class="uk-comment-title"><a target="_blank" href="#">Yerim Kim</a></h4>
                 <div class="uk-comment-meta">
                   Created at 1/4/2016 13:12, Last updated at 1/4/2016 13:12
+                </div>
+                <div class="comment_handling">
+                  <a target="_blank" class="uk-button" href="#"><i class="uk-icon-edit"></i>   Edit</a>
+                  <a target="_blank" class="uk-button" href="#"><i class="uk-icon-reply"></i>   Reply</a>
+                  <a target="_blank" class="uk-button" href="#"><i class="uk-icon-ban"></i>   Delete</a>
                 </div>
               </header>
               <div class="uk-comment-body"><p>Hi mom!</p></div>
@@ -293,7 +293,7 @@
            <form class="form-signin">
              <div id="info_span"><span id="changePassword_info"></span></div>             
              <label for="inputPassword" class="sr-only">Your Current Password</label>
-             <input type="passowrd" id="currentPassword" class="form-control" placeholder="Your Current Password" required="" autofocus="">
+             <input type="password" id="currentPassword" class="form-control" placeholder="Your Current Password" required="" autofocus="">
              <label for="inputPassword" class="sr-only">New Password</label>
              <input type="password" id="newPassword" class="form-control" placeholder="New Password" required="">
              <label for="inputPassword" class="sr-only">Confirm Your New Password</label>
