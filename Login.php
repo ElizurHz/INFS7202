@@ -93,12 +93,24 @@ if ($action == 'changePassword') {
   $currPwd = md5($currPassword);
   $newPwd = md5($newPassword);
 
-  $changeSQL = "UPDATE users SET password = ? WHERE username = ? and password = ?";
-  $changeQuery = $connect->prepare($changeSQL);
-  $changeQuery->bindParam(1, $newPwd);
-  $changeQuery->bindParam(2, $currUser);
-  $changeQuery->bindParam(3, $currPwd);
-  $changeQuery->execute();
+  // verify if current password matches that in the database
+  $verifyingSQL = "SELECT * FROM users WHERE username=? AND password=?";
+  $verifyingQuery = $connect->prepare($verifyingSQL);
+  $verifyingQuery->bindParam(1, $currUser);
+  $verifyingQuery->bindParam(2, $currPwd);
+  $verifyingQuery->execute();
 
-  echo json_encode(1);
+  if ($verifyingQuery->rowCount() == 1) {
+    // update the password
+    $changeSQL = "UPDATE users SET password = ? WHERE username = ? and password = ?";
+    $changeQuery = $connect->prepare($changeSQL);
+    $changeQuery->bindParam(1, $newPwd);
+    $changeQuery->bindParam(2, $currUser);
+    $changeQuery->bindParam(3, $currPwd);
+    $changeQuery->execute();
+
+    echo json_encode(1);
+  } else {
+    echo json_encode(0);
+  }  
 }

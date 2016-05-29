@@ -143,6 +143,9 @@ function changePassword() {
       'newPassword': newPassword.value
     },
     success: function change(data) {
+      if (data == "0") {
+        $('#changePassword_info').html('Plesae input your current password correctly!');
+      }
       if (data == "1") {
         $('#changePassword_info').html('Your password has been successfully changed.');
         setTimeout(function(){
