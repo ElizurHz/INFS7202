@@ -1,3 +1,23 @@
+function signUpClear() {
+  $('#signup_info').html('');
+  $('#inputSignUpUsername').val('');
+  $('#inputSignUpPassword').val('');
+  $('#confirmPassword').val('');
+}
+
+function loginClear() {
+  $('#login_info').html('');
+  $('#inputLoginUsername').val('');
+  $('#inputLoginPassword').val('');
+}
+
+function changePasswordClear() {
+  $('#changePassword_info').html('');
+  $('#currentPassword').val('');
+  $('#newPassword').val('');
+  $('#confirmNewPassword').val('');
+}
+
 function submitLoginForm() {
   var username = document.getElementById('inputLoginUsername');
   var password = document.getElementById('inputLoginPassword');
@@ -32,7 +52,7 @@ function submitLoginForm() {
         $('#signup, #login').hide();
         $('#account').append('<li><a class="dropdown_item" id="currentUser">Current User: ' + data.username + '</a></li>');
         $('#account').append('<li id="logout"><a class="dropdown_item" data-toggle="modal" data-target="#LogoutModal">Log Out</a></li>');
-        $('#account').append('<li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>');
+        $('#account').append('<li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal" onclick="changePasswordClear();">Change Password</a></li>');
         if (data.admin) {
           $('#account').append('<li id="newContent"><a class="dropdown_item" href="Upload.php">New Content</a></li>');
         }           
@@ -50,19 +70,19 @@ function submitSignUpForm() {
   var reg = /^[0-9a-zA-Z]*$/g;
 
   if (!username.value) {
-    $('#login_info').html('Username cannot be empty!');
+    $('#signup_info').html('Username cannot be empty!');
     return;
   }
   if (!reg.test(username.value)) {
-    $('#login_info').html('You can only use A-Z, a-z, and 0-9 in your username!');
-    return;
-  }
-  if (password.value != confirm.value) {
-    $('#login_info').html('Please ensure your confirmation matches the password.');
+    $('#signup_info').html('You can only use A-Z, a-z, and 0-9 in your username!');
     return;
   }
   if (!password.value) {
-    $('#login_info').html('Password cannot be empty!');
+    $('#signup_info').html('Password cannot be empty!');
+    return;
+  }
+  if (password.value != confirm.value) {
+    $('#signup_info').html('Please ensure your confirmation matches the password.');
     return;
   }
 
@@ -75,7 +95,7 @@ function submitSignUpForm() {
       'password': password.value
     },
     beforeSend: function() {
-      $('#login_info').html('Waiting...');
+      $('#signup_info').html('Waiting...');
     },
     success: function signup_success(data) {
       if (data.status == "1") {
@@ -87,7 +107,10 @@ function submitSignUpForm() {
         $('#signup, #login').hide();
         $('#account').append('<li><a class="dropdown_item" id="currentUser">Current User: ' + data.username + '</a></li>');
         $('#account').append('<li id="logout"><a class="dropdown_item" data-toggle="modal" data-target="#LogoutModal">Log Out</a></li>');
-        $('#account').append('<li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>');
+        $('#account').append('<li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal" onclick="changePasswordClear();">Change Password</a></li>');
+      }
+      if (data == "0") {
+        $('#signup_info').html("This username has already existed!");
       }
     }
   })
@@ -112,8 +135,8 @@ function logOut() {
       $('#changePassword').remove();
       $('#newContent').remove();
       $('#currentUser').remove();
-      $('#account').append('<li id="signup"><a class="dropdown_item" data-toggle="modal" data-target="#SignUpModal">Sign Up</a></li>');
-      $('#account').append('<li id="login"><a class="dropdown_item"  data-toggle="modal" data-target="#LoginModal">Login</a></li>');          
+      $('#account').append('<li id="signup"><a class="dropdown_item" data-toggle="modal" data-target="#SignUpModal" onclick="signUpClear();">Sign Up</a></li>');
+      $('#account').append('<li id="login"><a class="dropdown_item"  data-toggle="modal" data-target="#LoginModal" onclick="loginClear();">Login</a></li>');          
 
       setTimeout(function(){
         $('#LogoutModal').modal('hide');
@@ -122,14 +145,25 @@ function logOut() {
   })
 }
 
+function uploadLogout() {
+  self.location="index.php";
+  logOut(); 
+}
+
 function changePassword() {
   var currPassword = document.getElementById('currentPassword');
   var newPassword = document.getElementById('newPassword');
+  var confirmNewPassword = document.getElementById('confirmNewPassword');
   var currUser = $('#currentUser').html().substring(14);
 
   // Input the same password
   if (currPassword.value == newPassword.value) {
     $('#changePassword_info').html('Your new password cannot be the same as your current password!');
+    return;
+  }
+
+  if (confirmNewPassword.value != newPassword.value) {
+    $('#changePassword_info').html('Please ensure your confirmation matches the password.');
     return;
   }
 

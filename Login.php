@@ -37,6 +37,7 @@ if ($action == 'signup') {
     $arr = array ('status'=>1,'username'=>$username);
     echo json_encode($arr);
   } else {
+    // the username has already existed
     echo json_encode(0);
   }
 } 

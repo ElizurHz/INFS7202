@@ -51,7 +51,7 @@
               ?> 
                 <li><a class="dropdown_item" id="currentUser">Current User: <?php echo $_SESSION['username'] ?></a></li>
                 <li id="logout"><a class="dropdown_item" data-toggle="modal" data-target="#LogoutModal">Log Out</a></li>
-                <li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
+                <li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal" onclick="changePasswordClear();">Change Password</a></li>
                 <?php 
                    if($_SESSION['admin']){
                 ?>
@@ -60,8 +60,8 @@
               <?php }
                 if(!isset($_SESSION['auth'])){
               ?>
-                <li id="signup"><a class="dropdown_item" data-toggle="modal" data-target="#SignUpModal">Sign Up</a></li>
-                <li id="login"><a class="dropdown_item"  data-toggle="modal" data-target="#LoginModal">Login</a></li>
+                <li id="signup"><a class="dropdown_item" data-toggle="modal" data-target="#SignUpModal" onclick="signUpClear();">Sign Up</a></li>
+                <li id="login"><a class="dropdown_item"  data-toggle="modal" data-target="#LoginModal" onclick="loginClear();">Login</a></li>
               <?php } ?> 
             </ul>
           </li>
@@ -135,6 +135,38 @@
     </ul>
   </div>  
 
+  <!-- Sign Up Modal -->
+  <div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close"
+               data-dismiss="modal" aria-hidden="true">
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               Sign Up
+            </h4>
+         </div>
+         <div class="modal-body">
+           <form class="form-signin">
+             <div id="info_span"><span id="signup_info"></span></div>             
+             <label for="inputUsername" class="sr-only">Username</label>
+             <input type="username" id="inputSignUpUsername" class="form-control" placeholder="Username" required="" autofocus="">
+             <label for="inputPassword" class="sr-only">Password</label>
+             <input type="password" id="inputSignUpPassword" class="form-control" placeholder="Password" required="">
+             <label for="inputPassword" class="sr-only">Confirm Your Password</label>
+             <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Your Password" required="">
+           </form>
+         </div>
+         <div class="modal-footer">
+           <button class="btn btn-primary" id="signupButton" onclick="submitSignUpForm();">Sign Up</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Login Modal -->
   <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog"
    aria-labelledby="myModalLabel" aria-hidden="true">
@@ -159,7 +191,7 @@
          </div>
          <div class="modal-footer">
            <button class="btn btn-primary" id="LoginButton" onclick="submitLoginForm();">Login</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
          </div>
       </div>
     </div>
@@ -191,7 +223,7 @@
          </div>
          <div class="modal-footer">
            <button class="btn btn-primary" id="signupButton" onclick="changePassword();">Submit</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
          </div>
       </div>
     </div>
