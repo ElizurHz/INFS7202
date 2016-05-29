@@ -124,8 +124,14 @@ function logOut() {
 
 function changePassword() {
   var currPassword = document.getElementById('currentPassword');
-  var password = document.getElementById('newPassword');
+  var newPassword = document.getElementById('newPassword');
   var currUser = $('#currentUser').html().substring(14);
+
+  // Input the same password
+  if (currPassword == newPassword) {
+    $('#changePassword_info').html('Your new password cannot be the same as your current password!');
+    return;
+  }
 
   $.ajax({
     url: 'Login.php?action=changePassword',
@@ -134,7 +140,7 @@ function changePassword() {
     data: {
       'currUser': currUser,
       'currPassword': currPassword.value,
-      'newPassword': password.value
+      'newPassword': newPassword.value
     },
     success: function change(data) {
       if (data == "1") {
