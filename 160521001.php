@@ -6,23 +6,23 @@
 
   session_start();
 
-  $route = $_SERVER['PHP_SELF']; 
-  $post_id = (int)substr($route, 1, 9);
+  $post_id = (int)substr($_SERVER['PHP_SELF'], 1);
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
   $post_sql = "SELECT * FROM posts";
   $postResult = $conn->query($post_sql);
 
-  $comment_sql = "SELECT * FROM comments ORDER BY comment_id";
+  $comment_sql = "SELECT * FROM comments";
   $commentResult = $conn->query($comment_sql);
 
-  $media_sql = "SELECT * FROM comments ORDER BY media_id";
+  $media_sql = "SELECT * FROM media";
   $mediaResult = $conn->query($media_sql);
 
   $postArr=array();
   $commentArr=array();
   $mediaArr=array();
+
 
   while($postRow = $postResult->fetch_assoc()) {
     array_push($postArr, $postRow);
@@ -111,14 +111,14 @@
       <div class="col-md-12 content">
         <?php 
           for ($i=0; $i<count($postArr); $i++) {
-            if ($postArr['post_id'] == $post_id) {
-              echo "<h2>". $postArr['title'] ."</h2>\n"; 
+            if ($postArr[$i]['post_id'] == $post_id) {
+              echo "<h2>". $postArr[$i]['title'] ."</h2>\n"; 
             }
           } 
           echo "<hr>\n";
           for ($i=0; $i<count($postArr); $i++) {
-            if ($postArr['post_id'] == $post_id) {
-              echo "<p>". $postArr['content'] ."</p>\n"; 
+            if ($postArr[$i]['post_id'] == $post_id) {
+              echo "<p>". $postArr[$i]['content'] ."</p>\n"; 
             }
           } ?>
       </div>
@@ -132,17 +132,15 @@
         <div class="post-featured-image">
           <?php 
             for ($i=0; $i<count($mediaArr); $i++) {
-              if ($mediaArr['post_id'] == $post_id) {
-                echo "<a class=\"thumbnail loaded\" href=" . $mediaArr[$i]['url'] . " data-lightbox=\"famcam\">\n";
-                echo "<img src=" . $mediaArr[$i]['url'] . " class=\"main_imgs\" alt=\"Content_1\">";
-                echo "</a>";
+              if ($mediaArr[$i]['post_id'] == $post_id) {
+                echo "<a class=\"thumbnail loaded\" data-lightbox=\"famcam\" href=" . $mediaArr[$i]['url'] . "><img src=" . $mediaArr[$i]['url'] . " class=\"main_imgs\" alt=\"Content\"></a>";
               }
             } ?>
         </div>
       </article>
   </div>
   <hr>
-  
+
   <!-- Comments -->
   <ul class="uk-comment-list">
     <div id="comment_title">
@@ -153,12 +151,12 @@
     </div>
     <?php 
       for ($i=0; $i<count($commentArr); $i++) {
-        if ($commentArr['post_id'] == $post_id) { ?>
+        if ($commentArr[$i]['post_id'] == $post_id) { ?>
       <li>
         <article class="uk-comment comment">
           <hr>
           <header class="uk-comment-header">
-              <?php echo "<img class=\"uk-comment-avatar\" src=\"images/avatar" . ($i+1) . "jpg\" alt=\"avatar4\">\n"; ?>
+              <?php echo "<img class=\"uk-comment-avatar\" src=\"images/avatar1.jpg\" alt=\"avatar4\">\n"; ?>
               <?php echo "<h4 class=\"uk-comment-title\">" . $commentArr[$i]['comment_title'] . "</h4>\n"; ?>
               <div class="uk-comment-meta">
                 <?php echo "<a>". $commentArr[$i]['username'] . "</a>\n"; ?>
@@ -239,7 +237,7 @@
          </div>
          <div class="modal-footer">
            <button class="btn btn-primary" id="LoginButton" onclick="submitLoginForm();">Login</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
          </div>
       </div>
     </div>
@@ -271,7 +269,7 @@
          </div>
          <div class="modal-footer">
            <button class="btn btn-primary" id="signupButton" onclick="changePassword();">Submit</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
          </div>
       </div>
     </div>

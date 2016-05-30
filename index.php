@@ -123,12 +123,12 @@
           <div class="tiles left">
               <article class="post tag-ad">
                 <div class="post-featured-image">
-                    <?php echo "<a class=\"thumbnail loaded\" href=" . $finalArr[$i]['url'] . ">\n" ?>
+                    <?php echo "<a class=\"thumbnail loaded\" href=" . $finalArr[$i]['post_id'] . ".php>\n" ?>
                       <?php echo "<img class=\"main_img\" alt=" . "" . $finalArr[$i]['title'] . " src=" . $finalArr[$i]['thumbnail'] . ">\n" ?>
                     </a>
                 </div>
                 <h2 class="post-title">
-                  <?php echo "<a href=" . $finalArr[$i]['url'] . ">" . $finalArr[$i]['title'] . "</a>\n" ?>
+                  <?php echo "<a href=\"content.php\">" . $finalArr[$i]['title'] . "</a>\n" ?>
                 </h2>
               </article>
           </div>
@@ -136,12 +136,12 @@
         <div class="tiles right">
           <article class="post tag-ad">
             <div class="post-featured-image">
-                <?php echo "<a class=\"thumbnail loaded\" href=" . $finalArr[$i]['url'] . ">\n" ?>
+                <?php echo "<a class=\"thumbnail loaded\" href=" . $finalArr[$i]['post_id'] . ".php>\n" ?>
                   <?php echo "<img class=\"main_img\" alt=" . $finalArr[$i]['title'] . " src=" . $finalArr[$i]['thumbnail'] . ">" ?>
                 </a>
             </div>
             <h2 class="post-title">
-              <?php echo "<a href=" . $finalArr[$i]['url'] . ">" . $finalArr[$i]['title'] . "</a>\n" ?>
+              <?php echo "<a href=" . $finalArr[$i]['post_id'] . ".php>" . $finalArr[$i]['title'] . "</a>\n" ?>
             </h2>
           </article>
         </div>
