@@ -24,7 +24,7 @@
     $query->bindParam(1, $username);
     $query->execute();
 
-    if ($query->rowCount() == 0) {
+    if ($query->rowCount() == 0 && $username != null) {
       $signup_sql = "INSERT INTO users VALUES (?, ?, 0)";
       $signup_query = $connect->prepare($signup_sql);
       $signup_query->bindParam(1, $username);
