@@ -6,14 +6,32 @@
 
   session_start();
 
+  $route = $_SERVER['PHP_SELF']; 
+  $post_id = (int)substr($route, 1, 9);
+
   $conn = new mysqli($servername, $username, $password, $dbname);
-  $sql = "SELECT * FROM posts";
-  $result = $conn->query($sql);
 
-  $finalArr=array();
+  $post_sql = "SELECT * FROM posts WHERE post_id = $post_id";
+  $postResult = $conn->query($post_sql);
 
-  while($row = $result->fetch_assoc()) {
-    array_push($finalArr, $row);
+  $comment_sql = "SELECT * FROM comments WHERE post_id = $post_id ORDER BY comment_id";
+  $commentResult = $conn->query($comment_sql);
+
+  $media_sql = "SELECT * FROM comments WHERE post_id = $post_id ORDER BY media_id";
+  $mediaResult = $conn->query($media_sql);
+
+  $postArr=array();
+  $commentArr=array();
+  $mediaArr=array();
+
+  while($postRow = $postResult->fetch_assoc()) {
+    array_push($postArr, $postRow);
+  }
+  while($commentRow = $commentResult->fetch_assoc()) {
+    array_push($commentArr, $commentRow);
+  }
+  while($mediaRow = $mediaResult->fetch_assoc()) {
+    array_push($mediaArr, $mediaRow);
   }
 
   mysqli_close($conn);
@@ -22,42 +40,27 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="description" content="A fan site for Kim Yerim">
     <meta name="author" content="Haoze Xu">
-
 
     <link rel="icon" href="images/favicon.png">
 
     <title>ALL FOR YERI</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js" ></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="uikit.min.js"></script>
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/Content.css" rel="stylesheet">
     <script type="text/javascript" src="js/main.js" ></script>
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/comment.css" rel="stylesheet">
     <link href="css/uikit.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- banner -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-6 banner">
-        <div id="site_logo">
-          <img src="images/LOGO.png" alt="All For Yeri" height="100" width="400" >
-        </div>
-      </div>
-      <div class="col-xs-6 banner">
-        <div id="banner_decoration">
-          <img src="images/decoration.png" alt="decoration">
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- navigation bar -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -71,7 +74,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse nav_bar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.php">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="About_Yeri.php">About Yeri</a></li>
           <li><a href="About_Us.php">About Us</a></li>
           <li><a href="Feedback.php">Feedback</a></li>
@@ -81,20 +84,9 @@
               <?php
                  if($_SESSION['auth']){
               ?> 
-                <li>
-                  <a class="dropdown_item" id="currentUser">
-                    <?php
-                      if ($_SESSION['admin']) {
-                        echo "Administrator: ";
-                      } else {
-                        echo "Current User:  ";
-                      } 
-                      echo $_SESSION['username'] 
-                    ?>
-                  </a>
-                </li>
+                <li><a class="dropdown_item" id="currentUser">Current User: <?php echo $_SESSION['username'] ?></a></li>
                 <li id="logout"><a class="dropdown_item" data-toggle="modal" data-target="#LogoutModal">Log Out</a></li>
-                <li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal" onclick="changePasswordClear();">Change Password</a></li>
+                <li id="changePassword"><a class="dropdown_item" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
                 <?php 
                    if($_SESSION['admin']){
                 ?>
@@ -103,8 +95,8 @@
               <?php }
                 if(!isset($_SESSION['auth'])){
               ?>
-                <li id="signup"><a class="dropdown_item" data-toggle="modal" data-target="#SignUpModal" onclick="signUpClear();">Sign Up</a></li>
-                <li id="login"><a class="dropdown_item"  data-toggle="modal" data-target="#LoginModal" onclick="loginClear();">Login</a></li>
+                <li id="signup"><a class="dropdown_item" data-toggle="modal" data-target="#SignUpModal">Sign Up</a></li>
+                <li id="login"><a class="dropdown_item"  data-toggle="modal" data-target="#LoginModal">Login</a></li>
               <?php } ?> 
             </ul>
           </li>
@@ -113,45 +105,70 @@
     </div>
   </nav>
 
-  <!-- Tiles -->
+  <!-- Main Contents -->
   <div class="container main_content">
     <div class="row">
-    <?php 
-      for ($i=0; $i<count($finalArr); $i++) {
-        if ($i % 2) { ?>
-          <!-- Left-side Tile -->
-          <div class="tiles left">
-              <article class="post tag-ad">
-                <div class="post-featured-image">
-                    <?php echo "<a class=\"thumbnail loaded\" href=" . $finalArr[$i]['url'] . ">\n" ?>
-                      <?php echo "<img class=\"main_img\" alt=" . "" . $finalArr[$i]['title'] . " src=" . $finalArr[$i]['thumbnail'] . ">\n" ?>
-                    </a>
-                </div>
-                <h2 class="post-title">
-                  <?php echo "<a href=" . $finalArr[$i]['url'] . ">" . $finalArr[$i]['title'] . "</a>\n" ?>
-                </h2>
-              </article>
-          </div>
-    <?php } else { ?>
-        <div class="tiles right">
-          <article class="post tag-ad">
-            <div class="post-featured-image">
-                <?php echo "<a class=\"thumbnail loaded\" href=" . $finalArr[$i]['url'] . ">\n" ?>
-                  <?php echo "<img class=\"main_img\" alt=" . $finalArr[$i]['title'] . " src=" . $finalArr[$i]['thumbnail'] . ">" ?>
-                </a>
-            </div>
-            <h2 class="post-title">
-              <?php echo "<a href=" . $finalArr[$i]['url'] . ">" . $finalArr[$i]['title'] . "</a>\n" ?>
-            </h2>
-          </article>
-        </div>
-    <?php }
-      }
-    ?> 
+      <div class="col-md-12 content">
+        <?php echo "<h2>". $postArr['title'] ."</h2>\n"; ?>
+        <hr>
+        <?php echo "<p>". $postArr['content'] ."</p>\n"; ?>
+      </div>
     </div>
   </div>
 
+  <!-- Tiles -->
+  <div class="content_pic">
+      <article class="post tag-ad">
+        <h5>Gallery</h5>
+        <div class="post-featured-image">
+          <?php 
+            for ($i=0; $i<count($mediaArr); $i++) {
+              echo "<a class=\"thumbnail loaded\" href=" . $mediaArr[$i]['url'] . " data-lightbox=\"famcam\">\n";
+              echo "<img src=" . $mediaArr[$i]['url'] . " class=\"main_imgs\" alt=\"Content_1\">";
+              echo "</a>";
+            } ?>
+        </div>
+      </article>
+  </div>
   <hr>
+  
+  <!-- Comments -->
+  <ul class="uk-comment-list">
+    <div id="comment_title">
+      <div class="comment_handling">
+        <a class="uk-button uk-button-large" href="#"><i class="uk-icon-plus"></i>   New Comment</a>
+      </div>
+      <h3>Comment</h3>
+    </div>
+    <?php 
+      for ($i=0; $i<count($mediaArr); $i++) { ?>
+      <li>
+        <article class="uk-comment comment">
+          <hr>
+          <header class="uk-comment-header">
+              <?php echo "<img class=\"uk-comment-avatar\" src=\"images/avatar" . ($i+1) . "jpg\" alt=\"avatar4\">\n"; ?>
+              <?php echo "<h4 class=\"uk-comment-title\">" . $mediaArr[$i]['comment_title'] . "</h4>\n"; ?>
+              <div class="uk-comment-meta">
+                <?php echo "<a>". $mediaArr[$i]['username'] . "</a>\n"; ?>
+                <?php echo "Created at" . $mediaArr[$i]['comment_time']; ?>
+              </div>
+              <div class="comment_handling">
+                <?php
+                  if ($_SESSION['username'] == $mediaArr[$i]['username'] || $_SESSION['admin']) {
+                    echo "<a href=\"#\"><i class=\"uk-icon-edit\"></i>   Edit</a>";
+                    echo "<a href=\"#\"><i class=\"uk-icon-ban\"></i>   Delete</a>";
+                  }
+                  echo "<a href=\"#\"><i class=\"uk-icon-reply\"></i>   Reply</a>";
+                ?>
+              </div>
+          </header>
+          <div class="uk-comment-body">
+            <?php echo "<o>". $mediaArr[$i]['comment'] . "</o>\n"; ?>
+          </div>
+        </article>
+      </li>
+    <?php } ?>
+  </ul>
 
   <!-- Sign Up Modal -->
   <div class="modal fade" id="SignUpModal" tabindex="-1" role="dialog"
@@ -184,8 +201,7 @@
       </div>
     </div>
   </div>
-
-
+  
   <!-- Login Modal -->
   <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog"
    aria-labelledby="myModalLabel" aria-hidden="true">
@@ -210,7 +226,7 @@
          </div>
          <div class="modal-footer">
            <button class="btn btn-primary" id="LoginButton" onclick="submitLoginForm();">Login</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
          </div>
       </div>
     </div>
@@ -242,7 +258,7 @@
          </div>
          <div class="modal-footer">
            <button class="btn btn-primary" id="signupButton" onclick="changePassword();">Submit</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
          </div>
       </div>
     </div>
@@ -270,11 +286,15 @@
     </div>
   </div>
 
+  <hr>
+
   <!-- Footer -->
   <footer>
     <p class="pull-right"><a href="#">Back to top</a></p>
     <p>© 43400465, Haoze Xu</p>
     <div class="blank"></div>
   </footer>
+
+  <script type="text/javascript" src="js/lightbox.js"></script>
 
 </body>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 29, 2016 at 10:31 PM
+-- Generation Time: May 30, 2016 at 12:59 AM
 -- Server version: 5.5.46
 -- PHP Version: 5.6.21
 
@@ -68,10 +68,10 @@ CREATE TABLE IF NOT EXISTS `media` (
 --
 
 INSERT INTO `media` (`post_id`, `media_id`, `type`, `url`) VALUES
-(160521001, 1, 'pic', '160521/01.jpg'),
-(160521001, 2, 'pic', '160521/02.jpg'),
-(160524001, 1, 'pic', '106524/01.jpg'),
-(160524001, 2, 'pic', '160524/02.jpg');
+(160521001, 1, 'pic', '160521001/01.jpg'),
+(160521001, 2, 'pic', '160521001/02.jpg'),
+(160524001, 1, 'pic', '106524001/01.jpg'),
+(160524001, 2, 'pic', '160524001/02.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,8 +82,9 @@ INSERT INTO `media` (`post_id`, `media_id`, `type`, `url`) VALUES
 CREATE TABLE IF NOT EXISTS `posts` (
   `post_id` int(20) NOT NULL,
   `url` varchar(200) NOT NULL,
-  `Title` varchar(100) NOT NULL,
+  `title` varchar(100) NOT NULL,
   `content` varchar(20000) NOT NULL,
+  `thumbnail` varchar(200) NOT NULL,
   PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -91,9 +92,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `url`, `Title`, `content`) VALUES
-(160521001, '160521/001.php', '160521 Ediya Music Festival', 'CR: BEAUTIFUL MOMENT'),
-(160524001, '160524/001.php', '160524 Summer Concert ', 'CR:Popsicle');
+INSERT INTO `posts` (`post_id`, `url`, `title`, `content`, `thumbnail`) VALUES
+(160521001, '160521001/content.php', '160521 Ediya Music Festival', 'CR: BEAUTIFUL MOMENT', '160521001/01.jpg'),
+(160524001, '160524001/content.php', '160524 Summer Concert ', 'CR:Popsicle', '160524001/01.jpg');
 
 -- --------------------------------------------------------
 
