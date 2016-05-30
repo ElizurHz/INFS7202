@@ -20,9 +20,4 @@ I only implement the login system.
 * Session is used to remember the login status.
 
 ### Proposed Implementation For Not-implemented Parts
-* When uploading a new post, some data will be written in the database.
-* In the home page, the pictures and titles can be obtained from the database.
-  * Posts are stored in a table.
-  * The media in the posts are the weak entities related to the Posts.
-* Comment data are simply stored in the database.
-  * Comments are related to the posts.(foreign keys)
+* Uploading
