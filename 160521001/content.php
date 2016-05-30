@@ -11,13 +11,13 @@
 
   $conn = new mysqli($servername, $username, $password, $dbname);
 
-  $post_sql = "SELECT * FROM posts WHERE post_id = $post_id";
+  $post_sql = "SELECT * FROM posts";
   $postResult = $conn->query($post_sql);
 
-  $comment_sql = "SELECT * FROM comments WHERE post_id = $post_id ORDER BY comment_id";
+  $comment_sql = "SELECT * FROM comments ORDER BY comment_id";
   $commentResult = $conn->query($comment_sql);
 
-  $media_sql = "SELECT * FROM comments WHERE post_id = $post_id ORDER BY media_id";
+  $media_sql = "SELECT * FROM comments ORDER BY media_id";
   $mediaResult = $conn->query($media_sql);
 
   $postArr=array();
@@ -109,9 +109,18 @@
   <div class="container main_content">
     <div class="row">
       <div class="col-md-12 content">
-        <?php echo "<h2>". $postArr['title'] ."</h2>\n"; ?>
-        <hr>
-        <?php echo "<p>". $postArr['content'] ."</p>\n"; ?>
+        <?php 
+          for ($i=0; $i<count($postArr); $i++) {
+            if ($postArr['post_id'] == $post_id) {
+              echo "<h2>". $postArr['title'] ."</h2>\n"; 
+            }
+          } 
+          echo "<hr>\n";
+          for ($i=0; $i<count($postArr); $i++) {
+            if ($postArr['post_id'] == $post_id) {
+              echo "<p>". $postArr['content'] ."</p>\n"; 
+            }
+          } ?>
       </div>
     </div>
   </div>
@@ -123,9 +132,11 @@
         <div class="post-featured-image">
           <?php 
             for ($i=0; $i<count($mediaArr); $i++) {
-              echo "<a class=\"thumbnail loaded\" href=" . $mediaArr[$i]['url'] . " data-lightbox=\"famcam\">\n";
-              echo "<img src=" . $mediaArr[$i]['url'] . " class=\"main_imgs\" alt=\"Content_1\">";
-              echo "</a>";
+              if ($mediaArr['post_id'] == $post_id) {
+                echo "<a class=\"thumbnail loaded\" href=" . $mediaArr[$i]['url'] . " data-lightbox=\"famcam\">\n";
+                echo "<img src=" . $mediaArr[$i]['url'] . " class=\"main_imgs\" alt=\"Content_1\">";
+                echo "</a>";
+              }
             } ?>
         </div>
       </article>
@@ -141,20 +152,21 @@
       <h3>Comment</h3>
     </div>
     <?php 
-      for ($i=0; $i<count($mediaArr); $i++) { ?>
+      for ($i=0; $i<count($commentArr); $i++) {
+        if ($commentArr['post_id'] == $post_id) { ?>
       <li>
         <article class="uk-comment comment">
           <hr>
           <header class="uk-comment-header">
               <?php echo "<img class=\"uk-comment-avatar\" src=\"images/avatar" . ($i+1) . "jpg\" alt=\"avatar4\">\n"; ?>
-              <?php echo "<h4 class=\"uk-comment-title\">" . $mediaArr[$i]['comment_title'] . "</h4>\n"; ?>
+              <?php echo "<h4 class=\"uk-comment-title\">" . $commentArr[$i]['comment_title'] . "</h4>\n"; ?>
               <div class="uk-comment-meta">
-                <?php echo "<a>". $mediaArr[$i]['username'] . "</a>\n"; ?>
-                <?php echo "Created at" . $mediaArr[$i]['comment_time']; ?>
+                <?php echo "<a>". $commentArr[$i]['username'] . "</a>\n"; ?>
+                <?php echo "Created at" . $commentArr[$i]['comment_time']; ?>
               </div>
               <div class="comment_handling">
                 <?php
-                  if ($_SESSION['username'] == $mediaArr[$i]['username'] || $_SESSION['admin']) {
+                  if ($_SESSION['username'] == $commentArr[$i]['username'] || $_SESSION['admin']) {
                     echo "<a href=\"#\"><i class=\"uk-icon-edit\"></i>   Edit</a>";
                     echo "<a href=\"#\"><i class=\"uk-icon-ban\"></i>   Delete</a>";
                   }
@@ -163,11 +175,12 @@
               </div>
           </header>
           <div class="uk-comment-body">
-            <?php echo "<o>". $mediaArr[$i]['comment'] . "</o>\n"; ?>
+            <?php echo "<o>". $commentArr[$i]['comment'] . "</o>\n"; ?>
           </div>
         </article>
       </li>
-    <?php } ?>
+    <?php }
+     } ?>
   </ul>
 
   <!-- Sign Up Modal -->
