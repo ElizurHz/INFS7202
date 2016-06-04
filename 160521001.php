@@ -121,9 +121,11 @@
               echo "<p>". $postArr[$i]['content'] ."</p>\n"; 
             }
           } ?>
+        <hr>
       </div>
     </div>
   </div>
+
 
   <!-- Tiles -->
   <div class="content_pic">

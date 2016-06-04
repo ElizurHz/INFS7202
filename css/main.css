@@ -207,8 +207,8 @@ h2 a:hover {
 #confirmNewPassword, #sureLogout {  margin-bottom: 5px;}
 
 footer {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .blank {  height: 65px;}

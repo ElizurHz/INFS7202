@@ -10,25 +10,25 @@
 .uk-comment-avatar {
 	width: 50px;
 	height: 50px;
-    border: 1px solid #dddddd;
-    border-radius: 50%;
-    margin-right: 15px;
-    float: left;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  margin-right: 15px;
+  float: left;
 }
 
 .uk-comment-title {  display: inline;}
 
 .uk-comment-header h4 {
 	font-size: 18px;
-    line-height: 30px;
+  line-height: 30px;
 }
 
 .uk-comment-meta {	 
 	font-size: 12px;
 	margin: 2px 0 0 0;
-    font-size: 11px;
-    line-height: 16px;
-    color: #999;
+  font-size: 11px;
+  line-height: 16px;
+  color: #999;
 }
 
 .uk-comment-body {
@@ -36,7 +36,7 @@
 	font-size: 16px;
 	font-family: HelveticaNeue;
 	word-wrap: break-word;
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 .uk-comment-body p {  display: inline-block; }
@@ -78,7 +78,11 @@
   display: inline-block;
 }
 
-#comment_title {  padding-bottom: 3px; }
+#comment_title {  
+  padding-bottom: 3px;
+  margin-left: 10%;
+  margin-right: 110px; 
+}
 
 #comment_title h3 {
   font-family: Avenir-Book;
